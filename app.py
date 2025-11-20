@@ -167,4 +167,7 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    # Use the PORT environment variable when provided by hosting (e.g. Render)
+    port = int(os.environ.get('PORT', 5000))
+    # Listen on all interfaces so external services can reach the app
+    app.run(host='0.0.0.0', port=port, debug=True)
