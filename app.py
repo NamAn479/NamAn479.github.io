@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for
+from flask import Flask, request, jsonify, session, redirect, url_for, render_template
 import os
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__, static_folder='.')
+app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET', 'dev-secret-change-me')
 
 # Database helper (SQLite)
@@ -46,13 +46,10 @@ init_db()
 
 @app.route('/')
 def index():
-    return send_from_directory('.', 'login.html')
+    return render_template('login.html')
 
 
-@app.route('/<path:filename>')
-def static_files(filename):
-    # serve CSS/JS and other static files from working directory
-    return send_from_directory('.', filename)
+# Static files are served from the `static/` folder automatically by Flask.
 
 
 @app.route('/login', methods=['POST'])
@@ -92,7 +89,7 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
-        return send_from_directory('.', 'register.html')
+        return render_template('register.html')
 
     data = None
     if request.is_json:
