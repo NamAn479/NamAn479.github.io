@@ -1,0 +1,36 @@
+:root{
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #1a73e8;
+  --text: #18212d;
+  --muted: #9aa7c7;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg,var(--bg),#eef4fb);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+.card{width:100%;max-width:420px;background:var(--card);border-radius:12px;padding:28px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+.card h1{margin:0 0 18px 0;font-size:22px}
+form{display:flex;flex-direction:column;gap:12px}
+label{font-size:14px;color:var(--muted)}
+input[type="text"], input[type="password"]{width:100%;padding:12px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:16px;color:var(--text)}
+.password-wrap{position:relative;display:flex;align-items:center}
+.password-wrap .toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:var(--accent);padding:6px 8px;font-size:13px;cursor:pointer}
+.remember{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.btn{background:var(--accent);color:#fff;border:0;padding:12px 18px;border-radius:8px;font-size:16px;cursor:pointer}
+.btn:disabled{opacity:0.6;cursor:not-allowed}
+#form-message{margin-top:8px;font-size:14px;color:var(--muted)}
+
+/* simple input invalid state */
+.invalid{border-color:#e55353}
+.error-text{color:#e55353;font-size:13px;margin-top:4px}
+
+@media (max-width:460px){
+  .card{padding:18px}
+}
